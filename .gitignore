@@ -1,0 +1,41 @@
+# Ignore all files
+
+*
+
+# Override to ignore all hidden directories but not all dotfiles
+
+!.*
+.*/
+
+# Include specific files
+
+# Override for .gitignore technically unnecessary but retained
+# in case something changes
+!/.gitignore 
+
+# Include specific directories
+
+!.bin/
+!.bin/*
+!.config/
+!.config/fish/
+!.config/fish/*
+!.config/fish/*/*
+
+# Ignore symlinks
+
+.multirust
+
+# Ignore specific files
+
+.anyconnect
+.buildCount.plist
+.CFUserTextEncoding
+.DS_Store
+.gitconfig
+.vsce
+.viminfo
+.yarnrc
+.yo-rc-global.json
+fishd.*
+git-sizer
