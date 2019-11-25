@@ -1,29 +1,17 @@
-# Add `~/bin` to the `$PATH`
-set PATH $HOME/.bin $PATH
-set PATH /usr/local/sbin $PATH
+set PATH \
+    /usr/local/bin \
+    /usr/local/sbin \
+    $HOME/go/bin \
+    $HOME/.cargo/bin \
+    $HOME/bin \
+    $PATH
+set ANDROID_HOME $HOME/Library/Android/sdk
+set -x FASTLANE_HIDE_CHANGELOG 1
+set -x FASTLANE_SKIP_UPDATE_CHECK 1
+set -x XCODEGEN_OPTIONS "-q"
 
-# Add rbenv to the `$PATH`
-# set PATH $HOME/.rbenv/bin $PATH
+. $HOME/Repos/py/Environments/default/bin/activate.fish
 
-# Add Android command line tools to the `$PATH`
-# set PATH $HOME/Library/Android/sdk/tools $PATH
-# set PATH $HOME/Library/Android/sdk/platform-tools $PATH
+starship init fish | source
 
-# Add Cargo to the `$PATH`
-set PATH $HOME/.cargo/bin $PATH
-
-# Add Yarn to the `$PATH`
-# set PATH $HOME/.yarn/bin $PATH
-
-# Add Python 3.6 to the `$PATH`
-set PATH $HOME/Library/Python/3.6 $PATH
-
-# Add custom programs to the `$PATH`
-set PATH $HOME/.bin $PATH
-
-# swiftenv setup
-if which swiftenv > /dev/null; status --is-interactive; and source (swiftenv init -|psub); end
-
-# rbenv setup
-set PATH $HOME/.rbenv/shims $PATH
-rbenv rehash >/dev/null ^&1
+status --is-interactive; and source (rbenv init -|psub)
