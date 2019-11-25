@@ -1,0 +1,7 @@
+add_newline = false
+
+[battery]
+full_symbol = "🔋 "
+[[battery.display]]
+threshold = 20
+
