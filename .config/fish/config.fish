@@ -5,13 +5,12 @@ set PATH \
     $HOME/.cargo/bin \
     $HOME/bin \
     $PATH
-set ANDROID_HOME $HOME/Library/Android/sdk
-set -x FASTLANE_HIDE_CHANGELOG 1
-set -x FASTLANE_SKIP_UPDATE_CHECK 1
-set -x XCODEGEN_OPTIONS "-q"
 
-. $HOME/Repos/py/Environments/default/bin/activate.fish
+set -x ANDROID_SDK_HOME $HOME/Library/Android/sdk
+set -x -U GOPATH $HOME/go
+set -x BAT_THEME TwoDark
 
 starship init fish | source
 
-status --is-interactive; and source (rbenv init -|psub)
+source /usr/local/opt/asdf/asdf.fish
+. ~/.asdf/plugins/java/set-java-home.fish

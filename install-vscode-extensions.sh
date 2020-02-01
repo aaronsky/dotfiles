@@ -2,37 +2,26 @@
 
 echo | xargs -n 1 code --install-extension <<- EOF
 alexcvzz.vscode-sqlite
-BazelBuild.vscode-bazel
 bungcip.better-toml
 codezombiech.gitignore
 dbaeumer.vscode-eslint
 DotJoshJohnson.xml
-dracula-theme.theme-dracula
 eamodio.gitlens
 eg2.vscode-npm-script
 esbenp.prettier-vscode
 foxundermoon.shell-format
-GitHub.vscode-pull-request-github
 HookyQR.beautify
-jetmartin.bats
-jpogran.puppet-vscode
 Kasik96.swift
-mathiasfrohlich.Kotlin
-mauve.terraform
 mikestead.dotenv
 mischah.relaxed-theme
-mjmcloug.vscode-elixir
-ms-azuretools.vscode-docker
 ms-python.python
 ms-vscode.csharp
 ms-vscode.Go
 ms-vsliveshare.vsliveshare
 msjsdiag.debugger-for-chrome
-naco-siren.gradle-language
 rebornix.ruby
 rust-lang.rust
 skyapps.fish-vscode
-swyphcosmo.spellchecker
 timonwong.shellcheck
 twxs.cmake
 vadimcn.vscode-lldb
