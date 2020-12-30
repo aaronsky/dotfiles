@@ -1,0 +1,6 @@
+- import_tasks: macos.yml
+  when: ansible_os_family == "Darwin"
+
+- name: Visual Studio Code | Install Extensions
+  loop: '{{ vscode_extensions }}'
+  command: code --install-extension "{{ item }}"

@@ -1,0 +1,7 @@
+- name: Ruby | Install asdf Ruby plugin
+  command: "asdf plugin add ruby"
+  register: ruby_add
+  failed_when: ruby_add.rc == 1
+
+- name: Ruby | Install tool version
+  command: "asdf install ruby"

@@ -1,0 +1,7 @@
+- name: Java | Install asdf Java plugin
+  command: "asdf plugin add java"
+  register: java_add
+  failed_when: java_add.rc == 1
+
+- name: Java | Install tool version
+  command: "asdf install java"

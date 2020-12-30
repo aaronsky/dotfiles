@@ -1,0 +1,17 @@
+- name: Rust | Download Installer
+  get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/install-rustup.sh
+    mode: +x
+
+- name: Rust | Install
+  shell: /tmp/install-rustup.sh -y
+
+- name: Rust | Remove Installer
+  file:
+    path: /tmp/install-rustup.sh
+    state: absent
+
+- name: 'Rust | Install Cargo Crates'
+  command: 'cargo install {{ item }}'
+  loop: '{{ cargo_install_crates }}'

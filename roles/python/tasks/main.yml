@@ -1,0 +1,7 @@
+- name: Python | Install asdf Python plugin
+  command: "asdf plugin add python"
+  register: python_add
+  failed_when: python_add.rc == 1
+
+- name: Python | Install tool version
+  command: "asdf install python"

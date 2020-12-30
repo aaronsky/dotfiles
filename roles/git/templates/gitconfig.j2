@@ -1,0 +1,18 @@
+[user]
+	name = {{ git_user_name }}
+	email = {{ git_user_email }}
+{% if ansible_os_family == 'Darwin' %}
+[credential]
+        helper = osxkeychain
+{% endif %}
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[push]
+	default = current

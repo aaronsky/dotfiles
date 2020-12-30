@@ -1,0 +1,10 @@
+- name: Node.js | Install asdf Node.js plugin
+  command: "asdf plugin add nodejs"
+  register: nodejs_add
+  failed_when: nodejs_add.rc == 1
+
+- name: Node.js | Import release team keyring
+  command: "{{ asdf_dir }}/plugins/nodejs/bin/import-release-team-keyring"
+
+- name: Node.js | Install tool version
+  command: "asdf install nodejs"

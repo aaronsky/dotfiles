@@ -1,0 +1,6 @@
+- name: Visual Studio Code | Install
+  homebrew:
+    name: visual-studio-code
+    state: present
+  # This is until https://github.com/ansible-collections/community.general/issues/1524 is fixed
+  ignore_errors: yes

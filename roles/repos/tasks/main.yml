@@ -1,0 +1,19 @@
+- file:
+    path: '{{ repos_path }}'
+    state: directory
+- loop: '{{ all_repos | dict2items }}'
+  loop_control:
+    loop_var: repos
+  block:
+    - name: Repos | Create {{ repos.key }} directory
+      file:
+        path: '{{ repos_path }}/{{ repos.key }}'
+        state: directory
+    - name: Repos | Install repos
+      git:
+        repo: '{{ item.src }}'
+        dest: '{{ repos_path }}/{{ repos.key }}'
+        clone: yes
+        recursive: yes
+        update: yes
+      loop: '{{ repos.value }}'

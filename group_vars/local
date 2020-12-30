@@ -1,0 +1,36 @@
+dotfiles_user_home: "{{ '~' | expanduser }}"
+dotfiles_home: "{{ lookup('env', 'DOTFILES_HOME') | default(dotfiles_user_home + '/dotfiles', True) }}"
+
+git_user_name: Aaron Sky
+git_user_email: aaronsky@skyaaron.com
+
+macos_homebrew_taps:
+  - homebrew/bundle
+  - homebrew/cask
+  - homebrew/cask-fonts
+  - homebrew/cask-versions
+  - homebrew/core
+
+macos_homebrew_formula:
+  - bash
+  - cmake
+  - gh
+  - gnupg
+  - jq
+  - noti
+  - pcre
+  - pkg-config
+  - readline
+  - shellcheck
+  - shfmt
+  - wget
+
+macos_homebrew_casks:
+  - appcleaner
+  - discord
+  - docker
+  - font-fira-code
+  - suspicious-package
+  - the-unarchiver
+
+asdf_dir: '{{ dotfiles_user_home }}/.asdf'
