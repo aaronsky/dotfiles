@@ -3,5 +3,6 @@
   "files.associations": {
     "local": "yaml",
     "*.json.link": "jsonc"
-  }
+  },
+  "prettier.configPath": ".github/linters/.prettierrc.json"
 }

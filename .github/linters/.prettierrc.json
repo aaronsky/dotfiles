@@ -6,13 +6,7 @@
   "bracketSpacing": true,
   "overrides": [
     {
-      "files": [
-        "*.json",
-        "*.json.link",
-        "*.yml",
-        "*.yaml",
-        "group_vars/*"
-      ],
+      "files": ["*.json", "*.json.link", "*.yml", "*.yaml", "group_vars/*"],
       "options": {
         "tabWidth": 2
       }
