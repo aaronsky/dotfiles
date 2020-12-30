@@ -12,3 +12,4 @@
   template:
     src: gitconfig.j2
     dest: '{{ dotfiles_user_home }}/.gitconfig'
+    mode: '0600'

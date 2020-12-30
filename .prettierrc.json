@@ -6,7 +6,7 @@
   "bracketSpacing": true,
   "overrides": [
     {
-      "files": ["*.json", "*.yml", "*.yaml"],
+      "files": ["*.json", "*.yml", "*.yaml", "group_vars/*", ".ansible-lint"],
       "options": {
         "tabWidth": 2
       }

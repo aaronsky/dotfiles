@@ -5,7 +5,9 @@
     mode: +x
 
 - name: Rust | Install
-  shell: /tmp/install-rustup.sh -y
+  command: /tmp/install-rustup.sh -y
+  register: rust_install
+  changed_when: '"warning: Updating existing toolchain, profile choice will be ignored" not in rust_install.stdout'
 
 - name: Rust | Remove Installer
   file:
@@ -15,3 +17,5 @@
 - name: 'Rust | Install Cargo Crates'
   command: 'cargo install {{ item }}'
   loop: '{{ cargo_install_crates }}'
+  register: cargo_crate_install
+  changed_when: "cargo_crate_install.stdout | regex_search('Ignored package `' + item + '.*` is already installed') | bool"

@@ -8,7 +8,7 @@
     name: starship
     state: present
 
-- name: Add fish to /etc/shells
+- name: Fish | Add to /etc/shells
   lineinfile:
     line: /usr/local/bin/fish
     dest: /etc/shells
@@ -17,6 +17,6 @@
   become: true
   become_method: sudo
 
-- name: Change default shell to fish
+- name: Fish | Update Default Shell
   command: chsh -s /usr/local/bin/fish
   when: fish_shells.changed

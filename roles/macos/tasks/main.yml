@@ -75,7 +75,7 @@
     value: true
     state: present
 
-- shell: "chflags nohidden {{ dotfiles_user_home }}/Library"
+- shell: 'chflags nohidden {{ dotfiles_user_home }}/Library'
 
 - shell: chflags nohidden /Volumes
 
