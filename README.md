@@ -1,4 +1,4 @@
 # dotfiles
 
-A robust installer of my environment, ~accessible from a curl~ SOMEDAY
+A robust installer of my environment, powered by Ansible. ~Accessible from a curl~ SOMEDAY
 

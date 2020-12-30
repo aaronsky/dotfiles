@@ -11,8 +11,7 @@
         "*.json.link",
         "*.yml",
         "*.yaml",
-        "group_vars/*",
-        ".ansible-lint"
+        "group_vars/*"
       ],
       "options": {
         "tabWidth": 2
