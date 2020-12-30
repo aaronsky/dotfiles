@@ -1,113 +1,133 @@
-- osx_defaults:
+- name: Save screenshots to the Desktop
+  osx_defaults:
     domain: com.apple.screencapture
     key: location
     type: string
     value: '{{ dotfiles_user_home }}/Desktop'
     state: present
 
-- osx_defaults:
+- name: Save screenshots in PNG format
+  osx_defaults:
     domain: com.apple.screencapture
     key: type
     type: string
     value: png
     state: present
 
-- osx_defaults:
+- name: Disable shadow in screenshots
+  osx_defaults:
     domain: com.apple.screencapture
     key: disable-shadow
     type: bool
     value: true
     state: present
 
-- osx_defaults:
+- name: Finder | Show icons for external hard drives on the Desktop
+  osx_defaults:
     domain: com.apple.finder
     key: ShowExternalHardDrivesOnDesktop
     type: bool
     value: true
     state: present
 
-- osx_defaults:
+- name: Finder | Show icons for hard drives on the Desktop
+  osx_defaults:
     domain: com.apple.finder
     key: ShowHardDrivesOnDesktop
     type: bool
     value: true
     state: present
 
-- osx_defaults:
+- name: Finder | Show icons for servers on the Desktop
+  osx_defaults:
     domain: com.apple.finder
     key: ShowMountedServersOnDesktop
     type: bool
     value: true
     state: present
 
-- osx_defaults:
+- name: Finder | Show icons for removable media on the Desktop
+  osx_defaults:
     domain: com.apple.finder
     key: ShowRemovableMediaOnDesktop
     type: bool
     value: true
     state: present
 
-- osx_defaults:
+- name: Finder | Show hidden files by default
+  osx_defaults:
     domain: com.apple.finder
     key: AppleShowAllFiles
     type: bool
     value: true
     state: present
 
-- osx_defaults:
+- name: Finder | Show all filename extensions
+  osx_defaults:
     domain: NSGlobalDomain
     key: AppleShowAllExtensions
     type: bool
     value: true
     state: present
 
-- osx_defaults:
+- name: Avoid creating .DS_Store files on network volumes
+  osx_defaults:
     domain: com.apple.desktopservices
     key: DSDontWriteNetworkStores
     type: bool
     value: true
     state: present
 
-- osx_defaults:
+- name: Avoid creating .DS_Store files on USB volumes
+  osx_defaults:
     domain: com.apple.desktopservices
     key: DSDontWriteUSBStores
     type: bool
     value: true
     state: present
 
-- shell: 'chflags nohidden {{ dotfiles_user_home }}/Library'
+# will always appear to be changed
+- name: Show the ~/Library folder
+  command: 'chflags nohidden {{ dotfiles_user_home }}/Library'
 
-- shell: chflags nohidden /Volumes
+# will always appear to be changed
+- name: Show the /Volumes folder
+  command: chflags nohidden /Volumes
 
-- osx_defaults:
+- name: Activity Monitor | Show the main window on launch
+  osx_defaults:
     domain: com.apple.ActivityMonitor
     key: OpenMainWindow
     type: bool
     value: true
     state: present
 
-- osx_defaults:
+- name: Activity Monitor | Show all processes
+  osx_defaults:
     domain: com.apple.ActivityMonitor
     key: ShowCategory
     type: int
     value: 0
     state: present
 
-- osx_defaults:
+- name: Activity Monitor | Sort results by CPU usage
+  osx_defaults:
     domain: com.apple.ActivityMonitor
     key: SortColumn
     type: string
     value: CPUUsage
     state: present
 
-- osx_defaults:
+- name: Activity Monitor | Sort results descending
+  osx_defaults:
     domain: com.apple.ActivityMonitor
     key: SortDirection
     type: int
     value: 0
     state: present
 
-- osx_defaults:
+- name: Photos | Prevent from opening automatically when devices are plugged in
+  osx_defaults:
     domain: com.apple.ImageCapture
     key: disableHotPlug
     type: bool

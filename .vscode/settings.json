@@ -2,6 +2,7 @@
   "shellcheck.customArgs": ["--external-sources"],
   "files.associations": {
     "local": "yaml",
-    ".ansible-lint": "yaml"
+    ".ansible-lint": "yaml",
+    "*.json.link": "jsonc"
   }
 }

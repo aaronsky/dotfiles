@@ -1,8 +1,8 @@
-- name: Ensure Git is installed with Homebrew
+- name: Git | Ensure Git is installed with Homebrew
   homebrew:
     name: git
     state: present
-- name: Install Git LFS
+- name: Git | Install Git LFS
   homebrew:
     name: git-lfs
     state: present

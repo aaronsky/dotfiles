@@ -1,14 +1,14 @@
 - import_tasks: macos.yml
   when: ansible_os_family == "Darwin"
 
-- name: Link global gitignore file
+- name: Git | Link .gitignore_global
   file:
-    src: .gitignore_global.link
+    src: '{{ dotfiles_home }}/roles/git/files/.gitignore_global.link'
     dest: '{{ dotfiles_user_home }}/.gitignore_global'
     state: link
     force: yes
 
-- name: Write gitconfig
+- name: Git | gitconfig
   template:
     src: gitconfig.j2
     dest: '{{ dotfiles_user_home }}/.gitconfig'
