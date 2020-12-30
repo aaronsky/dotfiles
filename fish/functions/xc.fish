@@ -1,7 +1,6 @@
 # Port of xc function from oh-my-zsh xcode plugin
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/xcode/xcode.plugin.zsh
-
-function xc -d "Opens the first xcworkspace/xcodeproj in the specified directory"
+function xc --description "Opens the first xcworkspace/xcodeproj in the specified directory"
     set xcode_proj
     set swift_package
     set path $argv[1] "."

@@ -1,0 +1,84 @@
+{
+  "workbench.colorTheme": "Relaxed",
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "window.zoomLevel": 0,
+  "files.autoSave": "off",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.wordWrapColumn": 100,
+  "extensions.ignoreRecommendations": false,
+
+  // Explorer
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+
+  // Editor
+  "[go]": {
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "matklad.rust-analyzer",
+    "editor.formatOnSave": true
+  },
+
+  // Go
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": ["--fast"],
+  "go.formatTool": "goimports",
+  "go.useLanguageServer": true,
+  "go.testFlags": ["-race", "-covermode", "atomic"],
+
+  // Ruby
+  "ruby.useBundler": true, //run non-lint commands with bundle exec
+  "ruby.useLanguageServer": true, // use the internal language server (see below)
+  "ruby.lint": {},
+
+  // Prettier
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "es5",
+  "prettier.arrowParens": "avoid",
+
+  // Python
+  "python.pythonPath": "/Users/sky/.asdf/shims/python",
+  "python.formatting.provider": "black",
+  "python.linting.mypyEnabled": true,
+  "python.linting.banditEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": false,
+
+  // Terraform
+  "terraform.formatOnSave": true
+}
