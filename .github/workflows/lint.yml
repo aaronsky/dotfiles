@@ -18,5 +18,6 @@ jobs:
       - uses: github/super-linter@v3
         env:
           VALIDATE_ALL_CODEBASE: true
+          ANSIBLE_DIRECTORY: '.'
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
