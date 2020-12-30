@@ -1,0 +1,10 @@
+- name: Python | Install asdf Python plugin
+  command: asdf plugin add python
+  register: python_add
+  changed_when: python_add.rc == 0
+  failed_when: python_add.rc == 1
+
+- name: Python | Install tool version
+  command: asdf install python
+  register: python_install
+  changed_when: '"is already installed" not in python_install.stdout'

@@ -1,0 +1,24 @@
+- name: Rust | Download Installer
+  get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/install-rustup.sh
+    mode: +x
+  register: rust_download
+
+- name: Rust | Install
+  command: /tmp/install-rustup.sh -y
+  register: rust_install
+  when: rust_download.changed
+  changed_when: '"warning: Updating existing toolchain, profile choice will be ignored" not in rust_install.stdout'
+
+- name: Rust | Remove Installer
+  file:
+    path: /tmp/install-rustup.sh
+    state: absent
+  when: rust_download.changed
+
+- name: 'Rust | Install Cargo Crates'
+  command: 'cargo install {{ item }}'
+  loop: '{{ cargo_install_crates }}'
+  register: cargo_crate_install
+  changed_when: "cargo_crate_install.stdout | regex_search('Ignored package `' + item + '.*` is already installed') | bool"

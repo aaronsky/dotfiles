@@ -1,0 +1,12 @@
+- name: Repos | Create {{ repos.key }} directory
+  file:
+    path: '{{ repos_path }}/{{ repos.key }}'
+    state: directory
+    mode: '0755'
+
+- name: Repos | Install {{ repos.key }} repos
+  git:
+    repo: '{{ item.src }}'
+    dest: '{{ repos_path }}/{{ repos.key }}/{{ item.dest }}'
+    version: "{{ item.revision | default('HEAD', True) }}"
+  with_items: '{{ repos.value }}'

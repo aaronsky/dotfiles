@@ -1,0 +1,11 @@
+- name: 'Repos | Create {{ repos_path }} directory'
+  file:
+    path: '{{ repos_path }}'
+    state: directory
+    mode: '0755'
+
+- name: 'Repos | Clone all repositories'
+  include_tasks: repos.yml
+  loop: '{{ all_repos | dict2items }}'
+  loop_control:
+    loop_var: repos

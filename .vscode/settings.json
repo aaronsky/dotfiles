@@ -1,3 +1,7 @@
 {
-  "shellcheck.customArgs": ["--external-sources"]
+  "shellcheck.customArgs": ["--external-sources"],
+  "files.associations": {
+    "local": "yaml",
+    "*.json.link": "jsonc"
+  }
 }

@@ -1,0 +1,13 @@
+- name: Visual Studio Code | Install
+  homebrew:
+    name: visual-studio-code
+    state: present
+  # This is until https://github.com/ansible-collections/community.general/issues/1524 is fixed
+  ignore_errors: yes
+
+- name: Visual Studio Code | Link settings.json
+  file:
+    src: '{{ dotfiles_home }}/roles/vscode/files/settings.json.link'
+    dest: '{{ dotfiles_user_home }}/Library/Application Support/Code/User/settings.json'
+    state: link
+    force: yes

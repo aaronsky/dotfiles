@@ -1,0 +1,21 @@
+name: build
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: ansible-lint
+        uses: ansible/ansible-lint-action@master
+        with:
+          targets: dotfiles.yml
