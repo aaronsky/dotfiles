@@ -34,3 +34,57 @@ macos_homebrew_casks:
   - the-unarchiver
 
 asdf_dir: '{{ dotfiles_user_home }}/.asdf'
+
+# Map of arrays of maps of repositories to include. 
+# Supports one level of hierarchy (the top-level keys), each containing
+# arrays of maps of `src` (a git/SSH/HTTPS protocol repository address) 
+# and `dest` (the directory to clone into)
+all_repos:
+  cider:
+    - src: git@github.com:cidertool/asc-go.git
+      dest: asc-go
+    - src: git@github.com:cidertool/art.git
+      dest: art
+    - src: git@github.com:cidertool/cider.git
+      dest: cider
+    - src: git@github.com:cidertool/cider-action.git
+      dest: cider-action
+    - src: git@github.com:cidertool/cider-buildkite-plugin.git
+      dest: cider-buildkite-plugin
+    - src: git@github.com:cidertool/homebrew-tap.git
+      dest: homebrew-tap
+    - src: git@github.com:cidertool/scoop-bucket.git
+      dest: scoop-bucket
+  cs: []
+  extra:
+    - src: git@github.com:aaronsky/asdf-xcode.git
+      dest: asdf-xcode
+  go:
+    - src: git@github.com:aaronsky/codeowners-coverage.git
+      dest: codeowners-coverage
+    - src: git@github.com:aaronsky/newcity.git
+      dest: newcity
+  infra:
+    - src: git@github.com:aaronsky/terraform-projects.git
+      dest: terraform-projects
+  ios:
+    - src: git@github.com:aaronsky/rust-playground.git
+      dest: rust-playground
+    - src: git@github.com:aaronsky/buildkite-app.git
+      dest: buildkite-app
+  js:
+    - src: git@github.com:aaronsky/aaronsky.git
+      dest: aaronsky
+  rb: []
+  rs:
+    - src: git@github.com:aaronsky/advent-of-code.git
+      dest: advent-of-code
+    - src: git@github.com:wayfair/foxdie.git
+      dest: foxdie
+  swift:
+    - src: git@github.com:aaronsky/buildkite-swift.git
+      dest: buildkite-swift
+    - src: git@github.com:aaronsky/metal-playground.git
+      dest: metal-playground
+    - src: git@github.com:aaronsky/swift-dsa.git
+      dest: swift-dsa
