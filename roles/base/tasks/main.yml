@@ -1,3 +1,15 @@
 - include_role:
     name: macos
-  when: ansible_os_family == "Darwin"
+  when: ansible_facts['os_family'] == "Darwin"
+
+- include_role:
+    name: linux
+  when: ansible_facts['os_family'] == "Debian" or ansible_facts['os_family'] == "RedHat"
+
+- name: Bin | Link
+  file:
+    src: '{{ item }}'
+    dest: "{{ dotfiles_user_home }}/bin/{{ item | basename }}"
+    state: link
+    force: yes
+  with_fileglob: '{{ dotfiles_home }}/bin/*'

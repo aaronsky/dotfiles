@@ -1,7 +1,7 @@
 [user]
 	name = {{ git_user_name }}
 	email = {{ git_user_email }}
-{% if ansible_os_family == 'Darwin' %}
+{% if ansible_facts['os_family'] == 'Darwin' %}
 [credential]
         helper = osxkeychain
 {% endif %}

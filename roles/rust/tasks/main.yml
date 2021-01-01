@@ -1,6 +1,7 @@
 - name: Rust | Download Installer
   get_url:
     url: https://sh.rustup.rs
+    # FIXME: not windows friendly path
     dest: /tmp/install-rustup.sh
     mode: +x
   register: rust_download

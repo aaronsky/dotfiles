@@ -1,4 +1,0 @@
-- name: Go | Install
-  homebrew:
-    name: go
-    state: present

@@ -1,5 +1,11 @@
 - import_tasks: macos.yml
-  when: ansible_os_family == "Darwin"
+  when: ansible_facts['os_family'] == "Darwin"
+
+# - import_tasks: debian.yml
+#   when: ansible_facts['os_family'] == "Debian"
+
+# - import_tasks: redhat.yml
+#   when: ansible_facts['os_family'] == "RedHat"
 
 - name: Visual Studio Code | List Installed Extensions
   command: code --list-extensions

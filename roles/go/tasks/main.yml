@@ -1,2 +1,7 @@
-- import_tasks: macos.yml
-  when: ansible_os_family == "Darwin"
+- name: Go | Install
+  homebrew:
+    name: go
+    state: present
+  when: ansible_facts['os_family'] == "Darwin"
+
+# TODO: install Go on Linux

@@ -34,6 +34,8 @@ macos_homebrew_casks:
   - the-unarchiver
 
 asdf_dir: '{{ dotfiles_user_home }}/.asdf'
+# Only used on Linux – macOS uses Homebrew and always fetches the latest.
+asdf_version: v0.8.0
 
 # Map of arrays of maps of repositories to include. 
 # Supports one level of hierarchy (the top-level keys), each containing
