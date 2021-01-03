@@ -12,4 +12,4 @@
     dest: "{{ dotfiles_user_home }}/bin/{{ item | basename }}"
     state: link
     force: yes
-  with_fileglob: '{{ dotfiles_home }}/bin/*'
+  with_fileglob: 'bin/*'
