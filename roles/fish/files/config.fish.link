@@ -1,3 +1,7 @@
+# Workaround until https://github.com/fish-shell/fish-shell/commit/a6a0d43c9c211ad35d379a62b24da1c9b8c1d57e
+# is released in a new version of Fish
+function __fish_describe_command; end
+
 set PATH \
     /usr/local/bin \
     /usr/local/sbin \

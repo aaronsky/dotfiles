@@ -1,9 +1,7 @@
 - name: Visual Studio Code | Install
-  homebrew:
+  homebrew_cask:
     name: visual-studio-code
     state: present
-  # This is until https://github.com/ansible-collections/community.general/issues/1524 is fixed
-  ignore_errors: yes
 
 - name: Visual Studio Code | Link settings.json
   file:
