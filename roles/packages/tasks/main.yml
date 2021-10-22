@@ -1,5 +1,0 @@
-- import_tasks: macos.yml
-  when: ansible_facts['os_family'] == "Darwin"
-
-- import_tasks: linux.yml
-  when: ansible_facts['os_family'] == "Debian" or ansible_facts['os_family'] == "RedHat"

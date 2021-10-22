@@ -1,3 +1,29 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
-ansible-playbook -i hosts dotfiles.yml --ask-become-pass "$@"
+. lib/lib.sh
+
+# Install base configurations
+case "$(uname -s)" in
+    Linux*) setup linux;;
+    Darwin*) setup macos;;
+esac
+
+# Install fish configuration
+setup fish
+
+# Install Git configurations
+setup git
+
+# Install editor configurations
+setup editor
+
+# Install asdf and tools
+setup asdf
+
+# Install bin tools
+setup bin
+
+# Repos (but only on a local computer)
+if [ -n "${WORKSTATION:-}" ]; then
+    setup repos
+fi
