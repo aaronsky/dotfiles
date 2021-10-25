@@ -1,29 +1,84 @@
 #!/bin/sh
 
-. lib/lib.sh
+set -eu
 
-# Install base configurations
-case "$(uname -s)" in
-    Linux*) setup linux;;
-    Darwin*) setup macos;;
-esac
+is_macos() {
+    [ "$(uname -s)" = "Darwin" ]
+}
 
-# Install fish configuration
-setup fish
+is_linux_or_redhat() {
+    [ "$(uname -s)" = "Linux" ] || [ "$(uname -s)" = "RedHat" ]
+}
 
-# Install Git configurations
-setup git
+is_installed() {
+    command -v "$1" >/dev/null
+}
 
-# Install editor configurations
-setup editor
+setup_homebrew() {
+    is_macos || return
+    is_installed brew || {
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    }
 
-# Install asdf and tools
-setup asdf
+    if [ -f "$HOME/.Brewfile" ]; then
+        brew bundle --global
+    else
+        brew bundle --file "brew/.Brewfile"
+    fi
+    brew cleanup
+}
 
-# Install bin tools
-setup bin
+setup_asdf() {
+    is_installed asdf || return
+    asdf plugin add ruby
+    asdf plugin add python
+    asdf plugin add java
+    asdf plugin add nodejs
+    /bin/bash -c "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+    asdf install
+}
 
-# Repos (but only on a local computer)
-if [ -n "${WORKSTATION:-}" ]; then
-    setup repos
-fi
+install_code_extension() {
+    code --install-extension "$@"
+}
+
+setup_vscode() {
+    is_installed code || return
+    install_code_extension 'bungcip.better-toml'
+    install_code_extension 'codezombiech.gitignore'
+    install_code_extension 'esbenp.prettier-vscode'
+    install_code_extension 'foxundermoon.shell-format'
+    install_code_extension 'golang.go'
+    install_code_extension 'matklad.rust-analyzer'
+    install_code_extension 'mischah.relaxed-theme'
+    install_code_extension 'ms-azuretools.vscode-docker'
+    install_code_extension 'ms-dotnettools.csharp'
+    install_code_extension 'ms-python.python'
+    install_code_extension 'ms-toolsai.jupyter'
+    install_code_extension 'rebornix.ruby'
+    install_code_extension 'skyapps.fish-vscode'
+    install_code_extension 'timonwong.shellcheck'
+    install_code_extension 'vadimcn.vscode-lldb'
+    install_code_extension 'wingrunr21.vscode-ruby'
+    install_code_extension 'yzhang.markdown-all-in-one'
+}
+
+is_macos && . macos/defaults.sh
+
+# Homebrew (macOS-only)
+is_macos && setup_homebrew
+
+# GNU Stow
+stow asdf bin fish git ssh starship vim vscode
+is_macos stow brew iterm
+
+# Setup Git
+is_macos && {
+    git config --global credential.helper osxkeychain
+}
+
+# Setup asdf and tools
+setup_asdf
+
+# Install Code extensions
+setup_vscode
