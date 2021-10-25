@@ -1,6 +1,0 @@
-- name: Install packages
-  package:
-    name: '{{ linux_packages }}'
-    state: present
-
-# TODO: test this jazz

@@ -1,11 +1,6 @@
 {
   "shellcheck.customArgs": ["--external-sources"],
   "files.associations": {
-    "local": "yaml",
-    "*.json.link": "jsonc",
-    "*.fish.link": "fish",
-    "*.toml.link": "toml",
-    ".gitignore*.link": "gitignore"
-  },
-  "prettier.configPath": ".github/linters/.prettierrc.json"
+    ".Brewfile": "ruby"
+  }
 }

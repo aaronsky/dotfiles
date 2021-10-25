@@ -1,7 +1,0 @@
-exclude_paths:
-  - .ansible-lint.yml
-  - .prettierrc.json
-
-skip_list:
-  - no-handler
-  - no-changed-when
