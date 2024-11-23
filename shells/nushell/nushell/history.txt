@@ -1,0 +1,31 @@
+nu config-file
+code "/Users/sky/Library/Application Support/nushell/env.nu" "/Users/sky/Library/Application Support/nushell/env.nu"
+open "/Users/sky/Library/Application Support/nushell/env.nu" "/Users/sky/Library/Application Support/nushell/env.nu"
+nvim
+/opt/homebrew/bin/code "/Users/sky/Library/Application Support/nushell/"
+$env.PATH
+$env.CARGO_HOME
+$env.PATH
+which git
+$env.PATH
+which brew
+which git
+git --version
+'<\n>let mise_path = $nu.default-config-dir | path join mise.nu<\n>^mise activate nu | save $mise_path --force<\n>' | save $nu.env-path --append<\n>"\nuse mise.nu" | save $nu.config-path --append
+mise.nu
+ls
+mise list
+go --version
+go version
+which go
+which python
+which python3
+mise remove jq
+mise use jq
+mise list
+mise about jq
+mise info jq
+mise --help
+mise help
+echo $SHELL
+$env.SHELL

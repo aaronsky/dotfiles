@@ -1,6 +1,0 @@
-{
-  "shellcheck.customArgs": ["--external-sources"],
-  "files.associations": {
-    ".Brewfile": "ruby"
-  }
-}

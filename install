@@ -10,75 +10,95 @@ is_linux_or_redhat() {
     [ "$(uname -s)" = "Linux" ] || [ "$(uname -s)" = "RedHat" ]
 }
 
-is_installed() {
+has() {
     command -v "$1" >/dev/null
 }
 
-setup_homebrew() {
-    is_macos || return
-    is_installed brew || {
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    }
+link() {
+    src="$1"
+    dest="$2"
 
-    if [ -f "$HOME/.Brewfile" ]; then
-        brew bundle --global
-    else
-        brew bundle --file "brew/.Brewfile"
+    [ -e "$src" ] || return 1
+
+    mkdir -p "$(dirname "$dest")"
+
+    ln -sfv "$src" "$dest"
+}
+
+reload_session() {
+    :
+}
+
+install_dotfiles() {
+    link "git/.gitconfig" "$HOME/.gitconfig"
+    link "git/.gitignore_global" "$HOME/.gitignore_global"
+    link "mise" "$HOME/.config/mise/"
+    link "nvim" "$HOME/.config/nvim/"
+    link "shells/.profile" "$HOME/.profile"
+    link "shells/.zprofile" "$HOME/.zprofile"
+    link "shells/.zshenv" "$HOME/.zshenv"
+    link "shells/.zshrc" "$HOME/.zshrc"
+    link "shells/fish" "$HOME/.config/fish"
+    link "shells/nushell" "$HOME/.config/nushell"
+    link "shells/nushell" "$HOME/Library/Application Support/nushell"
+    link "shells/starship.toml" "$HOME/.config/starship.toml"
+    link "ssh/config" "$HOME/.ssh/config"
+}
+
+install_xcode_command_line_tools() {
+    [ -e "/Library/Developer/CommandLineTools/usr/bin/git" ] && return 0
+
+    xcode-select --install
+
+    if ! xcode-select --print-path >/dev/null 2>&1; then
+        sudo xcode-select --switch /Library/Developer/CommandLineTools
     fi
-    brew cleanup
+
+    [ -e "/Library/Developer/CommandLineTools/usr/bin/git" ] || return 1
 }
 
-setup_asdf() {
-    is_installed asdf || return
-    asdf plugin add ruby
-    asdf plugin add python
-    asdf plugin add java
-    asdf plugin add nodejs
-    /bin/bash -c "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
-    asdf install
+install_homebrew_if_needed() {
+    has brew && return 0
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    has brew || return 1
 }
 
-install_code_extension() {
-    code --install-extension "$@"
-}
+prepare_system() {
+    has git || return 1
 
-setup_vscode() {
-    is_installed code || return
-    install_code_extension 'bungcip.better-toml'
-    install_code_extension 'codezombiech.gitignore'
-    install_code_extension 'esbenp.prettier-vscode'
-    install_code_extension 'foxundermoon.shell-format'
-    install_code_extension 'golang.go'
-    install_code_extension 'matklad.rust-analyzer'
-    install_code_extension 'mischah.relaxed-theme'
-    install_code_extension 'ms-azuretools.vscode-docker'
-    install_code_extension 'ms-dotnettools.csharp'
-    install_code_extension 'ms-python.python'
-    install_code_extension 'ms-toolsai.jupyter'
-    install_code_extension 'rebornix.ruby'
-    install_code_extension 'skyapps.fish-vscode'
-    install_code_extension 'timonwong.shellcheck'
-    install_code_extension 'vadimcn.vscode-lldb'
-    install_code_extension 'wingrunr21.vscode-ruby'
-    install_code_extension 'yzhang.markdown-all-in-one'
-}
-
-is_macos && . macos/defaults.sh
-
-# Homebrew (macOS-only)
-is_macos && setup_homebrew
-
-# GNU Stow
-stow asdf bin fish git ssh starship vim vscode
-is_macos stow brew iterm
-
-# Setup Git
-is_macos && {
     git config --global credential.helper osxkeychain
 }
 
-# Setup asdf and tools
-setup_asdf
+install_homebrew_formula() {
+    has brew || return 1
 
-# Install Code extensions
-setup_vscode
+    brew install "$@"
+    brew cleanup
+}
+
+setup_mise_environment() {
+    has mise || return
+
+    mise install
+}
+
+install_dotfiles && reload_session
+install_xcode_command_line_tools
+install_homebrew_if_needed
+prepare_system
+install_homebrew_formula \
+    bash \
+    bazelisk \
+    fish \
+    git \
+    gh \
+    mise \
+    nushell \
+    ripgrep \
+    shellcheck \
+    shfmt \
+    starship \
+    zoxide
+setup_mise_environment
