@@ -1,3 +1,6 @@
+config:
+  - group: !include_dir_named "dotbot"
+
 profiles:
   macos:
     - unix
