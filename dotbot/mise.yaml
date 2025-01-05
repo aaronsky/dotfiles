@@ -1,7 +1,0 @@
-- package:
-    - brew: mise
-    - brew: libyaml
-
-- shell:
-    command: mise upgrade
-    desc: Installing tools with mise

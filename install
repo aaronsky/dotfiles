@@ -1,3 +1,51 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/jcwillox/dotbot/main/scripts/install/dotbot.sh)" -- init --apply aaronsky
+set -eu
+
+has() {
+    command -v "$1" >/dev/null
+}
+
+xdg_repos_home="${XDG_REPO_HOME:-$HOME/.local/repos}"
+dotfiles_home="$xdg_repos_home/dotfiles"
+mkdir -p "$xdg_repos_home"
+
+if ! has brew; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    echo "homebrew is already installed"
+fi
+
+git="$(which git)"
+if ! [ -x "$git" ]; then
+    brew install git
+    git=/opt/homebrew/bin/git
+else
+    echo "git is already installed"
+fi
+
+if ! [ -d "$HOME/.local/repos/dotfiles" ]; then
+    $git clone https://github.com/aaronsky/dotfiles "$HOME/.local/repos/dotfiles"
+fi
+
+# shellcheck source=.config/shells/common.sh
+. "$dotfiles_home/.config/shells/common.sh"
+
+mkdir -p "$XDG_CACHE_HOME"
+mkdir -p "$XDG_CONFIG_HOME"
+mkdir -p "$XDG_DATA_HOME"
+mkdir -p "$XDG_STATE_HOME"
+mkdir -p "$XDG_RUNTIME_DIR"
+
+mkdir -p "$XDG_STATE_HOME/bash"
+mkdir -p "$XDG_STATE_HOME/python"
+mkdir -p "$XDG_STATE_HOME/zsh"
+
+cp -R "$dotfiles_home/.config" "$HOME"
+cp -R "$dotfiles_home/.local" "$HOME"
+cp "$dotfiles_home/.bashrc" "$HOME/.bashrc"
+cp "$dotfiles_home/.zshenv" "$HOME/.zshenv"
+
+brew bundle --quiet --file="$dotfiles_home/Brewfile"
+
+echo "Done :)"

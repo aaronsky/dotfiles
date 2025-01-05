@@ -1,0 +1,5 @@
+copy-on-select = true
+font-family = FiraCode Nerd Font Mono
+theme = relaxed
+window-height = 40
+window-width = 125

@@ -1,10 +1,12 @@
 # dotfiles
 
-My dotfiles, powered by [TODO]. Automatically configures a full development environment using a single command.
+My dotfiles. Automatically configures a full development environment for my needs using a single command. Presumes macOS, though likely not incompatible with Linux.
 
 ## Installation
 
-[TODO]
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/aaronsky/dotfiles/refs/heads/main/install)"
+```
 
 ## License
 

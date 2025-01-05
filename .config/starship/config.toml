@@ -1,0 +1,12 @@
+add_newline = false
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[battery]
+full_symbol = "🔋 "
+[[battery.display]]
+threshold = 20

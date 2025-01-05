@@ -1,0 +1,9 @@
+#!/bin/bash
+
+dotfiles_install_cmd="$HOME/.local/repos/dotfiles/install"
+
+if ! [ -f "$dotfiles_install_cmd" ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/aaronsky/dotfiles/refs/heads/main/install)"
+else
+    $dotfiles_install_cmd
+fi

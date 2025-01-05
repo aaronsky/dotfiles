@@ -1,0 +1,20 @@
+[language-server.shellcheck]
+command = "shellcheck"
+
+[language-server.starpls]
+command = "starpls"
+
+[[language]]
+name = "bash"
+formatter = { command = "shfmt" }
+language-servers = [
+  "bash-language-server",
+  "shellcheck",
+]
+
+[[language]]
+name = "starlark"
+formatter = { command = "buildifier", args = ["--mode=fix"] }
+language-servers = [
+  { name = "starpls", except-features = ["format"] },
+]

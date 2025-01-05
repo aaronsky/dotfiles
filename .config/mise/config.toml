@@ -1,0 +1,10 @@
+[tools]
+node = "lts"
+python = "latest"
+ruby = "latest"
+java = "lts"
+go = "latest"
+jq = "latest"
+
+[settings]
+experimental = true

@@ -1,5 +1,0 @@
-- clean:
-  ~/:
-  ~/.config:
-    recursive: true
-  ~/.local/bin:
