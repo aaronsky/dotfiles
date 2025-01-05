@@ -8,7 +8,6 @@ fi
 export HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh/history"
 
 typeset -U path
-fpath+="/opt/homebrew/share/zsh-completions"
 fpath+="/opt/homebrew/share/zsh/site-functions"
 
 cache_home="${XDG_CACHE_HOME:-$HOME/.cache}"
