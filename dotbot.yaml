@@ -1,0 +1,9 @@
+profiles:
+  macos:
+    - unix
+    - macos
+    - mise
+    - bazel
+
+default_profile:
+  - macos

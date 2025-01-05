@@ -1,0 +1,3 @@
+- package:
+    - brew: bazelisk
+    - brew: withered-magic/brew/starpls
