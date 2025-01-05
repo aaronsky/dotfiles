@@ -48,4 +48,6 @@ cp "$dotfiles_home/.zshenv" "$HOME/.zshenv"
 
 brew bundle --quiet --file="$dotfiles_home/Brewfile"
 
+mise trust --ignore "$dotfiles_home/.config/mise/config.toml"
+
 echo "Done :)"
