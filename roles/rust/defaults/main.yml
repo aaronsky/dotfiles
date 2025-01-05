@@ -1,4 +1,0 @@
-cargo_install_crates:
-  - cargo-generate
-  - cargo-release
-  - wasm-pack
